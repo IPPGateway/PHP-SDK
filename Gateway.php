@@ -10,7 +10,7 @@ class IPPGateway {
     }
 
     public function checkout_id($data){
-        return $this->curl("https://api.ippeurope.com/payments/checkout_id", "POST", [], $data)->content->checkout_id;
+        return $this->curl("https://api.ippeurope.com/payments/checkout_id", "POST", [], $data)->content;
     }
     public function payment_status($transaction_id,$transaction_key){
         $data = ["transaction_id" => $transaction_id, "transaction_key" => $transaction_key];
