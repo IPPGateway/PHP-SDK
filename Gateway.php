@@ -22,6 +22,7 @@ class IPPGateway {
     private function curl($url, $type = 'POST', $query = [], $data = [], $headers = []){
         $data["id"] = $this->company_id;
         $data["key2"] = $this->company_key2;
+        $data["origin"] = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, "$url.php?".http_build_query($query, "", "&", PHP_QUERY_RFC3986));
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $type);
